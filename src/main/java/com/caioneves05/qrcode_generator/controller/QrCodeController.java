@@ -22,6 +22,8 @@ public class QrCodeController {
     @PostMapping
     public ResponseEntity<QrCodeGenerateResponseDTO> generate(@RequestBody QrCodeGenerateRequestDTO request){
         try {
+            System.out.print(request);
+            System.out.print("cc");
             return ResponseEntity.ok(this.qrCodeGeneratorService.generateAndUploadQrCode(request.text()));
         } catch (Exception e) {
             return ResponseEntity.status(500).body(new QrCodeGenerateResponseDTO("Error generating QR code: " + e.getMessage()));
